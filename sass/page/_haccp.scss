@@ -1,0 +1,108 @@
+// 畜禽屠宰場HACCP業者暨管制小組教育訓練課程
+.un-login{
+    .header{
+        padding-top: 4px;
+        &:before{
+            height: 4px;
+        }
+    }
+
+    .login{
+        float: right;
+        padding: 1em 0;
+
+        a{
+            display: inline-block;
+            background: $lightColor;
+            color: #fff;
+            padding: .5em 2em;
+            border-radius: 2em;
+        }
+
+        @include screen('mobile') {
+            display: none;
+        }
+    }
+}
+
+.haccp{
+    .searchCtrl{
+        display: none;
+    }
+}
+
+.course{
+    padding: 1.5em;
+    border: 1px solid #eee;
+    margin-bottom: 1.5em;
+
+    .course_name{
+        font-size: 150%;
+        color: #005c9e;
+        line-height: 1.2;
+
+        &:before{
+            content: '課程編號名稱：';
+            color: #666;
+            font-size: 72%;
+            display: block;
+            padding-bottom: 4px;
+        }
+    }
+    .num{
+        b{
+            display: inline-block;
+            padding: 0 4px;
+            color: #0075ba;
+        }
+    }
+
+    .flex{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 1em 0;
+        border-bottom: 2px solid #005c9e;
+
+        .course_name, .btn_grp{
+            margin: 0;
+            padding: 0;
+        }
+
+        .course_name{}
+        .btn_grp{}
+    }
+}
+
+// 已錄取身份
+.admitted{
+    border: 1px solid #666;
+    padding: .25em 1em;
+    &:before{
+        content: '錄取身份：';
+    }
+}
+
+// 行動版選單
+.sidebar {
+    .m_area{
+        .login{
+            a{
+                display: block;
+                background: #4fabf0;
+                border: solid 2px transparent;
+                color: #fff;
+                padding: .5em 2em;
+                margin: .75em 1em;
+                border-radius: 2em;
+                text-align: center;
+
+                &:hover, &:focus{
+                    background: darken(#4fabf0, 16);
+                    border: solid 2px #4fabf0;
+                }
+            }
+        }
+    }
+}

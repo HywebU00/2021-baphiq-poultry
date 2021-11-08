@@ -57,12 +57,29 @@ body {
         .navlist {
             // 使用者操作
             &.user_control{
-                font-size: 1m;
+                font-size: 1em;
                 text-align: right;
 
                 .btn-logout{
                     padding: .25em .75em;
                 }
+            }
+        }
+    }
+}
+
+.user_control{
+    @include screen('mobile') {
+        color: #fff;
+
+        a{
+            color: yellow;
+            padding: .75em .25em;
+            text-decoration: underline;
+            transition: all 600ms ease;
+
+            &:hover, &:focus{
+                text-decoration: none;
             }
         }
     }
