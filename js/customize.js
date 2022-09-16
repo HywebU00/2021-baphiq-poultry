@@ -10,6 +10,42 @@ $(function () {
             resizeSensor: true,
         });
     }
+
+    $('.search button.switch').click(function(){
+        $(this).next('.form_grp').fadeToggle('600');
+    });
+
+    // 偵測登入與否， search、nav 的 top 數值異動
+    var _window = $(window),
+        ww = _window.outerWidth(),
+        wwTablet = 992;
+
+    // alert('有');
+    // $('.sidebarCtrl, .searchCtrl').css('top','46px');
+    // $('.m_search').css('top','119px');
+
+    if(windowW <= wwTablet && $(".navigation").length > 0 ){
+        $('.sidebarCtrl, .searchCtrl').css('top','40px');
+        $('.m_search').css('top','107px');
+    }
+    var resizeHeaderTimer;
+    if ($(".navigation").length > 0 ) {
+        function TT(){
+            windowW = _window.outerWidth();
+            if(windowW <= wwTablet){
+                $('.sidebarCtrl, .searchCtrl').css('top','40px');
+                $('.m_search').css('top','107px');
+            }else{
+                $('.sidebarCtrl, .searchCtrl').css('top', 0);
+                $('.m_search').css('top', 0);
+            }
+        }
+        _window.on('resize', function (event) {
+            clearTimeout(resizeHeaderTimer);
+            resizeHeaderTimer = setTimeout(function(){ TT(); }, 50);
+        });
+    };
+    
     // 首頁輪播
     // $('.mpSlider').slick({
     //     mobileFirst: true,

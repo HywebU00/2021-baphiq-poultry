@@ -1,15 +1,18 @@
+$m-gutter: 10px;
 footer {
     clear: both;
     text-align: left;
     font-size: 0.813em;
     padding: 1em 0;
     .container {
-        @include gutter;
+        @include gutter(60px);
         > div { padding-bottom: 1em; }
         // display: flex;
         // @include screen('tablet') {
         //     flex-wrap: wrap;
         // }
+
+        @extend %flex_set;
     }
     a {
         text-decoration: none;
@@ -22,12 +25,28 @@ footer {
     //     flex: 0 1 240px;
     // }
     .footer_info {
+        @include flex-xs(12, 0px);
+        @include flex-sm(12, 0px);
+        @include flex-md(8, 0px);
+        @include flex-lg(8, 0px);
         // flex: 1 1 auto;
         p{
-            line-height: 1;
-            margin: 10px;
+            line-height: 1.4;
+            margin: 10px 0;
         }
     }
+    .footer_link {
+        @include flex-xs(12, 0px);
+        @include flex-sm(12, 0px);
+        @include flex-md(4, 0px);
+        @include flex-lg(4, 0px);
+        text-align: right;
+        a{
+            display: inline-block;
+            transform: scale(.8);
+        }
+    }
+
     // .footer_icon {
     //     flex: 0 1 200px;
     //     @include screen('tablet') {

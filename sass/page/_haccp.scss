@@ -1,4 +1,8 @@
 // 畜禽屠宰場HACCP業者暨管制小組教育訓練課程
+// .header .navigation{
+//     right: 76px;
+// }
+
 .un-login{
     .header{
         padding-top: 4px;
@@ -10,6 +14,7 @@
     .login{
         float: right;
         padding: 1em 0;
+        margin-right: 78px;
 
         a{
             display: inline-block;
@@ -19,7 +24,7 @@
             border-radius: 2em;
         }
 
-        @include screen('mobile') {
+        @include screen('tablet') {
             display: none;
         }
     }

@@ -14,6 +14,11 @@ body {
     //     margin: 0;
     //     padding: 0;
     // }
+
+    background: url(../images/bg-mp-1.jpg) 50% top no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 // 內頁（兩物件 水平、垂直置中）
@@ -59,9 +64,28 @@ body {
             &.user_control{
                 font-size: 1em;
                 text-align: right;
+                font-weight: bold;
+
+                span{
+                    padding-right: 4px;
+                }
 
                 .btn-logout{
-                    padding: .25em .75em;
+                    padding: 0 1.125em;
+                    margin: 0;
+                    line-height: 46px;
+                    border-radius: 26px;
+                }
+            }
+        }
+        @include screen('tablet') {
+            .navlist {
+                // 使用者操作
+                &.user_control{
+                    .btn-logout{
+                        line-height: 36px;
+                        background: #fff;
+                    }
                 }
             }
         }
@@ -70,10 +94,9 @@ body {
 
 .user_control{
     @include screen('mobile') {
-        color: #fff;
-
+        // color: #fff;
         a{
-            color: yellow;
+            // color: yellow;
             padding: .75em .25em;
             text-decoration: underline;
             transition: all 600ms ease;
@@ -155,6 +178,12 @@ body {
             text-align: center;
         }
     }
+
+    @include screen('mobile') {
+        .list-info-box{
+            padding-bottom: 1.25em;
+        }
+    }
 }
 
 .nice{ color: green;}
@@ -172,8 +201,21 @@ body {
     width: 100%;
     margin: 0px auto;
 
-    background: url(../images/bg-mp-1.jpg) 50% top no-repeat;
+    // background: url(../images/bg-mp-1.jpg) 50% top no-repeat;
     background-attachment: fixed;
+
+    // 左邊的鵝
+    position: relative;
+    &:before{
+        content: '';
+        position: fixed;
+        width: 420px;
+        height: 420px;
+        background: url(../images/bg-mp-left.png) 50% 50% no-repeat;
+        background-size: contain;
+        left: calc((100% - 1000px) / 2 - 210px);
+        top: 120px;
+    }
 
     @include screen('mobile') {
         // background: #fff;
@@ -190,12 +232,51 @@ body {
 .main {
     position: relative;
     margin: 0 auto;
-    @include screen('mobile') {
+    @include screen('tablet') {
         padding-top: 60px;
     }
     // 可先設定一個中央區塊最大寬，限制accesskey對齊
     h2 {
         line-height: 1.25em;
+    }
+}
+
+.flex{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .flex-form{ flex: 1 1 auto; }
+    .note{
+        padding-left: 2em;
+        span{ margin-left: 12px; }
+        .place{
+            font-size: 1.25em;
+            font-weight: bold;
+        }
+        b{
+            padding: 0 2px;
+            font-size: 1.25em;
+            font-weight: bold;
+            color: #922416;
+        }
+    }
+
+    @include screen('tablet') {
+        flex-flow: row wrap;
+        margin: 1.25em 0;
+
+        .flex-form{ flex: 1 1 100%; }
+        .note{ padding-left: 0; }
+    }
+    @include screen('xs_mobile') {
+        .note{
+            span{
+                margin-left: 0;
+                display: block;
+            }
+        }
     }
 }
 ////////////////////////////////////////////////////////////
@@ -211,6 +292,13 @@ body {
         padding: 2em 2em;
         margin-top: 1.5em;
         border-radius: 8px;
+
+        &.desk-only{
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+            .desk-menu{}
+        }
     }
     .center_block {
         flex: none;
@@ -249,6 +337,131 @@ body {
     }
     &.large_size {
         font-size: 1.125em;
+    }
+
+    .showbox{
+        background: #f7f7f7;
+        border: 1px solid #ddd;
+
+        // 等級比率
+        &.ratio{
+            padding: 3em 1em;
+            position: relative;
+
+            @extend %flex_set;
+            .col{
+                &:first-child{
+                    @include flex-xs(12, 0px);
+                    @include flex-sm(12, 0px);
+                    @include flex-md(8, 8px);
+                    @include flex-lg(8, 8px);
+
+                    position: relative;
+
+                    .grade{
+                        position: absolute;
+                        background: rgba(255,255,255,.9);
+                        border: 1px solid #ddd;
+                    }
+                    .map{
+                        // background: #fff;
+                    }
+                }
+                &:last-child{
+                    @include flex-xs(12, 0px);
+                    @include flex-sm(12, 0px);
+                    @include flex-md(4, 8px);
+                    @include flex-lg(4, 8px);
+
+                    .scroltable { min-width: auto !important; }
+                }
+            }
+            .map{
+                // height: 900px;
+            }
+        }
+
+        // 圖台
+        &.map_box{
+            min-height: 500px;
+            text-align: center;
+            line-height: 500px;
+            span{
+                font-size: 2em;
+                font-weight: bold;
+            }
+        }
+
+        .grade{
+            border-radius: 4px 4px 0 0;
+            overflow: hidden;
+            h3{
+                text-align: center;
+                background: #cdcdcd;
+                margin: 0;
+                font-size: 1.125em;
+                padding: 0.5em 0;
+            }
+            ul{
+                @include li-reset;
+                padding: 1em 1.5em;
+                li{
+                    display: flex;
+                    align-items: center;
+                    padding: .25em 0;
+                    &:before{
+                        content: '';
+                        display: inline-block;
+                        margin-right: 4px;
+                        width: 22px;
+                        height: 22px;
+                        background: #c6c340;
+                        border-radius: 50%;
+                    }
+
+                    &:nth-child(2):before{ background: #fde1b5; }
+                    &:nth-child(3):before{ background: #f6a866; }
+                    &:nth-child(4):before{ background: #ea5b4a; }
+                }
+            }
+            table{
+                background: #fff;
+                font-size: .9em;
+                th, td{
+                    border-left: 0;
+                    border-right: 0;
+                    text-align: center;
+
+                    &:first-child{
+                        border-left: #ddd 1px solid;
+                    }
+                    &:last-child{
+                        border-right: #ddd 1px solid;
+                    }
+                }
+                th{
+                    background: #fff;
+                    // font-size: .9em;
+                    line-height: 1.2;
+                }
+                td{}
+                tr{
+                    td{
+                        &:nth-child(2), &:nth-child(3){ color: #922416; font-weight: bold; }
+                    }
+                }
+            }
+        }
+
+        @include screen('mobile') {
+            // 等級比率
+            &.ratio{
+                padding: 1.65em 1em;
+                .map{
+                    margin-top: 11em;
+                }
+            }
+        }
     }
 }
 .hidden {

@@ -1,5 +1,6 @@
 // 可設定背景顏色
-$sidebar_bgColor: saturate(darken($primaryColor, 18), 20);
+// $sidebar_bgColor: saturate(darken($primaryColor, 18), 20);
+$sidebar_bgColor: #232b73;
 // 選色參考：https://sassme.jim-nielsen.com/
 $menuItems: 15;
 // 行動版選單sidebar
@@ -166,6 +167,26 @@ $menuItems: 15;
                     }
                 }
             }
+        }
+
+        .others{
+            width: 90%;
+            margin: 0 auto 1em;
+            display: none;  // 平板再打開
+            a{
+                // display: block;
+                // background: #000;
+                // color: #fff;
+                // font-size: 1.125em;
+                // text-align: center;
+                // border-radius: 6px;
+                // padding: .45em 0;
+                // margin: 6px 0;
+            }
+        }
+
+        @include screen('tablet') {
+            // .others{ display: block; }
         }
     }
     .navigation {

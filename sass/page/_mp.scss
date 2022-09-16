@@ -76,31 +76,98 @@ a.more {
     position: relative;
     &:before, &:after{
         content: '';
-        position: absolute;
+        position: fixed;
         z-index: -1;
     }
     // 左邊的鵝
     &:before{
-        width: 360px;
-        height: 520px;
+        width: 460px;
+        height: 460px;
         background: url(../images/bg-mp-left.png) 50% 50% no-repeat;
-        background-size: 360px;
-        // background-attachment: fixed;
-        left: 160px;
-        top: 240px;
+        background-size: contain;
+        left: calc((100% - 1000px) / 2 - 230px);
+        top: 120px;
     }
     // 右邊的雞
     &:after{
-        width:  100%;
+        width:  850px;
         height: 940px;
-        background: url(../images/bg-mp-right.png) right 0 top 60px no-repeat,
-                    url(../images/bg-mp-1.jpg) 50% top no-repeat;
-        background-size: 760px auto, cover;
-        background-attachment: fixed;
-        right: 0;
+        background: url(../images/bg-mp-right.png) right 0 top 76px no-repeat;
+        right: calc((100% - 1000px) / 2 - 480px);
         top: 0;
         z-index: -2;
     }
+
+    @media screen and (max-width: 1200px) {
+        // 左邊的鵝
+        &:before{
+            transform: scale(.85);
+            left: 30px;
+            top: 70px;
+        }
+        // 右邊的雞
+        &:after{
+            transform: scale(.95);
+            right: -29%;
+            top: -6%;
+        }
+    }
+
+    @include screen('tablet') {
+        // // 左邊的鵝
+        // &:before{
+        //     transform: scale(.65);
+        //     // left: 15px;
+        //     left: calc(25% - 144px);
+        //     top: 25px;
+        // }
+        // // 右邊的雞
+        // &:after{
+        //     // opacity: .75;
+        //     transform: scale(.75);
+        //     top: -70px;
+        // }
+        // 左邊的鵝
+        &:before{
+            transform: scale(.45);
+            // left: -23px;
+            left: calc(50% - 360px);
+            // top: 126px;
+            top: 210px;
+        }
+        // 右邊的雞
+        &:after{
+            transform: scale(.65);
+            // top: -15px;
+            top: 40px;
+            right: calc(50% - 426px);
+        }
+    }
+    // @include screen('mobile') {
+    //     // 左邊的鵝
+    //     &:before{
+    //         transform: scale(.55);
+    //         // left: -23px;
+    //         top: 101px;
+    //     }
+    //     // 右邊的雞
+    //     &:after{
+    //         transform: scale(.55);
+    //         top: -70px;
+    //         right: calc(50% - 426px);
+    //     }
+    // }
+
+    // @include screen('xs_mobile') {
+    //     // 左邊的鵝
+    //     &:before{
+    //         top: 210px;
+    //     }
+    //     // 右邊的雞
+    //     &:after{
+    //         top: 40px;
+    //     }
+    // }
 }
 
 .mp, .join{
@@ -116,44 +183,98 @@ a.more {
 // 會員登入、加入會員
 .members{
     padding: 1.5em 0 2.5em;
-    a{
-        display: inline-block;
-        vertical-align: middle;
-        padding: .75em 2em .75em 3.5em;
-        border-radius: 2em;
-        // background: $lightColor;
-        color: #fff;
-        font-size: 1.5em;
+    
+    .container{
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
 
-        &:first-child{
-            margin-left: 3.25em;
+        .col{
+            &:first-child{
+                a{
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding: .75em 2em .75em 3.5em;
+                    border-radius: 2em;
+                    // background: $lightColor;
+                    color: #fff;
+                    font-size: 1.5em;
+
+                    &:first-child{
+                        margin-left: 3.25em;
+                    }
+                    &.login{
+                        background: url(../images/icon-login.svg) 1.75em 50% no-repeat, $lightColor;
+                        background-size: 32px 32px;
+                    }
+                    &.join{
+                        background: url(../images/icon-join.svg) 1.75em 50% no-repeat, $lightColor;
+                        background-size: 32px 32px;
+                    }
+                }
+            }
+            &.others{
+                margin-left: 2em;
+                a{
+                    padding: 0 1em;
+                    min-height: 2.5em;
+                    font-weight: bold;
+                    line-height: 2.5em;
+                    white-space: nowrap;
+                    color: #222;
+                    display: inline-block;
+                    font-size: 1.25em;
+                    background: rgba(255,255,255,.75);
+                    backdrop-filter: blur(2px);
+                    transition: .3s;
+
+                    &:hover, &:focus{
+                        background: rgba(255,255,255,1);
+                    }
+                }
+            }
         }
-        &.login{
-            background: url(../images/icon-login.svg) 1.75em 50% no-repeat, $lightColor;
-            background-size: 32px 32px;
-        }
-        &.join{
-            background: url(../images/icon-join.svg) 1.75em 50% no-repeat, $lightColor;
-            background-size: 32px 32px;
+    }
+
+    @include screen('tablet') {
+        padding: 2.5em 0 14em;
+        text-align: center;
+        .container{
+            justify-content: center;
+            .col{
+                &:first-child{
+                    a{
+                        display: block;
+                        margin-bottom: 10px;
+                        &:first-child{ margin-left: 0; }
+                    }
+                }
+                &.others{ display: none; }
+            }
         }
     }
 
     @include screen('mobile') {
-        padding: 2.5em 0;
-        text-align: center;
+        // padding: 2.5em 0 14em;
+        // text-align: center;
         a{
             &:first-child{
                 margin-left: 0;
-                max-width: autp;
+                max-width: auto;
+                // a{ display: block; }
             }
         }
     }
+    // @include screen('xs_mobile') {
+    //     a{ margin-bottom: 10px; }
+    // }
 }
 
 $links-m-gutter: 8px;
 .main-info{
     .container{
         background: rgba(255,255,255,.75);
+        backdrop-filter: blur(3px);
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         // background: pink;
         border-radius: 8px;
@@ -162,15 +283,8 @@ $links-m-gutter: 8px;
 
     // 圖片連結
     .img-link{
-        @extend %flex_set;
         a.links{
-            @include flex-xs-equal(2, 0px);
-            @include flex-sm-equal(2, $links-m-gutter);
-            @include flex-md-equal(4, $links-m-gutter);
-            @include flex-lg-equal(4, $links-m-gutter);
-            // @include gutter();
-
-            height: 280px;
+            margin: 12px 0;
 
             // 裝飾色塊
             position: relative;
@@ -179,7 +293,8 @@ $links-m-gutter: 8px;
                 position: absolute;
                 width: 0;
                 height: 0;
-                top: 1.5em;
+                // top: 1.5em;
+                top: -1em;
                 border-style: solid;
                 border-width: 120px 200px 0 0;
                 border-color: $secondaryColor transparent transparent transparent;
@@ -192,7 +307,7 @@ $links-m-gutter: 8px;
                 background: #fb5e00;
                 transform: rotate(-31.5deg);
                 left: 5.4em;
-                top: 4.2em;
+                top: 1.6em;
             }
             // 標題
             span{
@@ -201,33 +316,98 @@ $links-m-gutter: 8px;
                 font-size: 1.25em;
                 color: #222;
                 font-weight: bold;
-                margin-top: 1.25em;
+                // margin-top: 1.25em;
+                margin-top: -1em;
 
                 position: absolute;
                 z-index: 1;
             }
 
-            &:nth-child(1){
-                background: url(../images/mp-link-1.jpg) 50% 50% no-repeat;
+            // 說明
+            p{
+                margin: 0;
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                background: rgb(0,0,0);
+                background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+                color: #fff;
+                padding: 5em 2em 1em;
             }
-            &:nth-child(2){
-                background: url(../images/mp-link-2.jpg) 50% 50% no-repeat;
-            }
-            &:nth-child(3){
-                background: url(../images/mp-link-3.jpg) 50% 50% no-repeat;
-            }
-            &:nth-child(4){
-                background: url(../images/mp-link-4.jpg) 50% 50% no-repeat;
-            }
+        }
+        &:first-child{
+            margin-bottom: 24px;
+            a.links{
+                display: block;
+                width: 100%;
+                height: 100%;
+                min-height: 176px;
+                max-height: 424px;
 
-            &:nth-child(1),&:nth-child(2),&:nth-child(3),&:nth-child(4){
-                background-size: 120%;
-                transition: all ease .3s;
-            }
-            &:hover, &:focus{
-                &:nth-child(1),&:nth-child(2),&:nth-child(3),&:nth-child(4){
-                    background-size: 140%;
+                background: url(../images/mp-link-1.jpg) 50% 50% no-repeat;
+                background-size: 103%;
+                transition: .3s;
+                &:hover, &:focus{
+                    background-size: 120%;
                 }
+
+                // 裝飾色塊
+                &:before{
+                    border-width: 130px 260px 0 0;
+                    border-color: #fb5e00 transparent transparent transparent;
+                }
+                &:after{
+                    background: $secondaryColor;
+                    transform: rotate(-27deg);
+                    left: 8.2em;
+                }
+                // 標題
+                span{ color: #fff; }color: #fff; 
+            }
+        }
+        &:last-child{
+            @extend %flex_set;
+            a.links{
+                @include flex-xs-equal(1, 0px);
+                @include flex-sm-equal(1, 0px);
+                @include flex-md-equal(2, $links-m-gutter);
+                @include flex-lg-equal(2, $links-m-gutter);
+                // @include gutter();
+
+                height: 200px;
+                margin: 12px 0;
+
+                &:nth-child(1){
+                    background: url(../images/mp-link-2.jpg) 50% 50% no-repeat;
+                }
+                &:nth-child(2){
+                    background: url(../images/mp-link-3.jpg) 50% 50% no-repeat;
+                }
+                &:nth-child(3){
+                    background: url(../images/mp-link-4.jpg) 50% 50% no-repeat;
+                }
+                &:nth-child(4){
+                    background: url(../images/mp-link-5.jpg) 50% 50% no-repeat;
+                }
+
+                &:nth-child(1),&:nth-child(2),&:nth-child(3),&:nth-child(4){
+                    // background-size: 120%;
+                    background-size: 100%;
+                    transition: .3s;
+                }
+                &:hover, &:focus{
+                    &:nth-child(1),&:nth-child(2),&:nth-child(3),&:nth-child(4){
+                        // background-size: 140%;
+                        background-size: 120%;
+                    }
+                }
+            }
+        }
+
+        @include screen('tablet') {
+            &:first-child{ margin-bottom: 36px; }
+            &:last-child{
+                a.links{ margin-bottom: 24px;}
             }
         }
     }
@@ -269,18 +449,24 @@ $links-m-gutter: 8px;
             li{
                 a{
                     display: block;
-                    padding: .25em 0;
+                    padding: .45em 0;
                     color: #222;
+                    border-bottom: 1px solid #ddd;
                     transition: all ease .3s;
+
                     time{
                         font-size: .813em;
                         padding-right: .75em;
                     }
 
                     &:hover, &:focus{
-                        padding: .25em 1em;
-                        background: rgba(255,205,0,.65);
+                        padding: .45em 1em;
+                        // background: rgba(255,205,0,.65);
+                        background: #e6e6e6;
                     }
+                }
+                &:last-child{
+                    a{ border-bottom: 1px solid transparent; }
                 }
             }
         }
@@ -311,7 +497,7 @@ $links-m-gutter: 8px;
 //     @include screen('mobile') {
 //         @include gutter();
 //     }
-//     .slick-prev {
+//     .slic0k-prev {
 //         background: url(../vendor/slick/icon_arrow_left_inverse.png) no-repeat center center;
 //         background-size: 80%;
 //         left: -15px;
