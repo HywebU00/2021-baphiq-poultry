@@ -1,9 +1,11 @@
 * {
     box-sizing: border-box;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 body {
     // &.noscroll {
     //     position: static !important;
@@ -23,26 +25,28 @@ body {
 
 // 內頁（兩物件 水平、垂直置中）
 // h2節點 ＋ function功能區塊
-.flex-between{
+.flex-between {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
 
     h2.title,
-    .function_panel{
+    .function_panel {
         flex: 1 1 auto;
     }
 
     @include screen('mobile') {
         flex-flow: row wrap;
-        h2.title, .function{
+
+        h2.title,
+        .function {
             flex: 1 1 100%;
         }
     }
 }
 
-.sub-title{
+.sub-title {
     color: #074cbc;
     font-size: 1.35em;
     padding-left: .75em;
@@ -50,27 +54,32 @@ body {
 }
 
 // 表單分類標題
-.form_main_title{
+.form_main_title {
     color: darken($lightColor, 6);
 }
-.flex-form .form_grp .form_title{ color: #222; }
+
+.flex-form .form_grp .form_title {
+    color: #222;
+}
 
 // 使用者操作
 .header {
+
     // 導覽列
     .navigation {
         .navlist {
+
             // 使用者操作
-            &.user_control{
+            &.user_control {
                 font-size: 1em;
                 text-align: right;
                 font-weight: bold;
 
-                span{
+                span {
                     padding-right: 4px;
                 }
 
-                .btn-logout{
+                .btn-logout {
                     padding: 0 1.125em;
                     margin: 0;
                     line-height: 46px;
@@ -78,11 +87,13 @@ body {
                 }
             }
         }
+
         @include screen('tablet') {
             .navlist {
+
                 // 使用者操作
-                &.user_control{
-                    .btn-logout{
+                &.user_control {
+                    .btn-logout {
                         line-height: 36px;
                         background: #fff;
                     }
@@ -92,16 +103,18 @@ body {
     }
 }
 
-.user_control{
+.user_control {
     @include screen('mobile') {
+
         // color: #fff;
-        a{
+        a {
             // color: yellow;
             padding: .75em .25em;
             text-decoration: underline;
             transition: all 600ms ease;
 
-            &:hover, &:focus{
+            &:hover,
+            &:focus {
                 text-decoration: none;
             }
         }
@@ -110,56 +123,116 @@ body {
 
 // 訪視紀錄
 // 上傳訪視內容
-.file-upload{
+.file-upload {
     padding: 1.5em 2.5em;
     background: #f8f8f8;
     border-radius: 6px;
 }
-.list-history{
-    .title{}
+
+.list-history {
+    .title {}
+
     // 訪視紀錄
-    .list-info-box{
+    .list-info-box {
         @extend %flex_set;
         align-items: center;
         margin: 10px 0;
         border: solid 1px #ddd;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
 
-        .img-container{
+        >ul {
+            li {
+                line-height: 1.8;
+
+                a,
+                b {
+                    color: red;
+                }
+
+                a {
+                    padding: 0 4px;
+                    text-decoration: underline;
+
+                    &:hover,
+                    &:focus {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        >.count {
+            padding: 10px 20px;
+            width: 100%;
+
+            .flex-form {
+                background: #f3f3f3;
+                border-top: solid 1px #d1d1d1;
+                border-bottom: solid 1px #d1d1d1;
+                margin-left: -20px;
+                margin-right: -20px;
+                padding: 0 20px;
+
+                .form_title {
+                    padding: 1em 0;
+                }
+            }
+
+            h4 {
+                font-size: 1.25em;
+                margin: 1em 0 0;
+                color: #000074;
+            }
+
+            a,
+            b {
+                color: red;
+            }
+        }
+
+        .img-container {
             @include flex-xs(12, 0px);
             @include flex-sm(6, $m-gutter);
             @include flex-md(4, $m-gutter);
             @include flex-lg(4, $m-gutter);
         }
-        .info{
+
+        .info {
             @include flex-xs(12, 0px);
             @include flex-sm(3, $m-gutter);
             @include flex-md(6, $m-gutter);
             @include flex-lg(6, $m-gutter);
             font-size: 1.125em;
 
-            .title{
+            .title {
                 font-size: 1.3em;
                 padding-left: .75em;
                 margin: 0;
-                span{
+
+                span {
                     display: inline-block;
                     border: 1px solid #ddd;
                     padding: .6em 1em .45em;
 
                     // 裝飾線條
                     position: relative;
-                    &:before, &:after{
+
+                    &:before,
+                    &:after {
                         content: '';
                         position: absolute;
                         background: $lightColor;
                     }
-                    &:before{
+
+                    &:before {
                         width: 4px;
                         height: 20px;
                         left: -2px;
                         top: 0;
                     }
-                    &:after{
+
+                    &:after {
                         width: 26px;
                         height: 4px;
                         left: -2px;
@@ -168,9 +241,12 @@ body {
                 }
             }
 
-            li{ line-height: 1.6;}
+            li {
+                line-height: 1.6;
+            }
         }
-        .operate{
+
+        .operate {
             @include flex-xs(12, 0px);
             @include flex-sm(3, $m-gutter);
             @include flex-md(2, $m-gutter);
@@ -180,14 +256,23 @@ body {
     }
 
     @include screen('mobile') {
-        .list-info-box{
+        // .list-info-box {
+        //     padding-bottom: 1.25em;
+        // }
+
+        .operate {
             padding-bottom: 1.25em;
         }
     }
 }
 
-.nice{ color: green;}
-.bad{ color: red;}
+.nice {
+    color: green;
+}
+
+.bad {
+    color: red;
+}
 
 // 放進function_panel樣式
 .function_panel {
@@ -206,7 +291,8 @@ body {
 
     // 左邊的鵝
     position: relative;
-    &:before{
+
+    &:before {
         content: '';
         position: fixed;
         width: 420px;
@@ -223,39 +309,51 @@ body {
         overflow-y: auto;
     }
 }
+
 // 整體共用container樣式，請注意首頁切版頁面的整齊
 .container {
     padding: 0;
     margin: 0 auto;
     max-width: $container-max; //請看_variable.scss
 }
+
 .main {
     position: relative;
     margin: 0 auto;
+
     @include screen('tablet') {
         padding-top: 60px;
     }
+
     // 可先設定一個中央區塊最大寬，限制accesskey對齊
     h2 {
         line-height: 1.25em;
     }
 }
 
-.flex{
+.flex {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
 
-    .flex-form{ flex: 1 1 auto; }
-    .note{
+    .flex-form {
+        flex: 1 1 auto;
+    }
+
+    .note {
         padding-left: 2em;
-        span{ margin-left: 12px; }
-        .place{
+
+        span {
+            margin-left: 12px;
+        }
+
+        .place {
             font-size: 1.25em;
             font-weight: bold;
         }
-        b{
+
+        b {
             padding: 0 2px;
             font-size: 1.25em;
             font-weight: bold;
@@ -267,90 +365,107 @@ body {
         flex-flow: row wrap;
         margin: 1.25em 0;
 
-        .flex-form{ flex: 1 1 100%; }
-        .note{ padding-left: 0; }
+        .flex-form {
+            flex: 1 1 100%;
+        }
+
+        .note {
+            padding-left: 0;
+        }
     }
+
     @include screen('xs_mobile') {
-        .note{
-            span{
+        .note {
+            span {
                 margin-left: 0;
                 display: block;
             }
         }
     }
 }
+
 ////////////////////////////////////////////////////////////
 // 為了與首頁區隔，請在內頁加上innerpage ClassName
 .innerpage {
-    > .container {
+    >.container {
         // padding-top: 1em;
         // @include gutter(); //gutter 代表左右要留白
         display: flex;
 
-        background: rgba(255,255,255,.9);
+        background: rgba(255, 255, 255, .9);
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         padding: 2em 2em;
         margin-top: 1.5em;
         border-radius: 8px;
 
-        &.desk-only{
+        &.desk-only {
             background: transparent;
             box-shadow: none;
             padding: 0;
-            .desk-menu{}
+
+            .desk-menu {}
         }
     }
+
     .center_block {
         flex: none;
         flex-basis: 100%;
         max-width: 100%;
     }
+
     .left_block {
         flex: none;
         flex-basis: 260px;
         max-width: 260px;
         margin-right: 40px;
         align-self: flex-start;
+
         &.hidden {
-            + .center_block {
+            +.center_block {
                 flex: none;
                 flex-basis: 100%;
                 max-width: 100%;
             }
         }
-        + .center_block {
+
+        +.center_block {
             flex: auto;
             flex-basis: calc(100% - 300px);
             max-width: calc(100% - 300px);
         }
+
         @include screen('tablet') {
             display: none;
-            + .center_block {
+
+            +.center_block {
                 flex: none;
                 flex-basis: 100%;
                 max-width: 100%;
             }
         }
     }
+
     &.small_size {
         font-size: 0.938em;
     }
+
     &.large_size {
         font-size: 1.125em;
     }
 
-    .showbox{
+    .showbox {
         background: #f7f7f7;
         border: 1px solid #ddd;
 
         // 等級比率
-        &.ratio{
+        &.ratio {
             padding: 3em 1em;
             position: relative;
 
             @extend %flex_set;
-            .col{
-                &:first-child{
+
+            .col {
+                &:first-child {
                     @include flex-xs(12, 0px);
                     @include flex-sm(12, 0px);
                     @include flex-md(8, 8px);
@@ -358,58 +473,68 @@ body {
 
                     position: relative;
 
-                    .grade{
+                    .grade {
                         position: absolute;
-                        background: rgba(255,255,255,.9);
+                        background: rgba(255, 255, 255, .9);
                         border: 1px solid #ddd;
                     }
-                    .map{
+
+                    .map {
                         // background: #fff;
                     }
                 }
-                &:last-child{
+
+                &:last-child {
                     @include flex-xs(12, 0px);
                     @include flex-sm(12, 0px);
                     @include flex-md(4, 8px);
                     @include flex-lg(4, 8px);
 
-                    .scroltable { min-width: auto !important; }
+                    .scroltable {
+                        min-width: auto !important;
+                    }
                 }
             }
-            .map{
+
+            .map {
                 // height: 900px;
             }
         }
 
         // 圖台
-        &.map_box{
+        &.map_box {
             min-height: 500px;
             text-align: center;
             line-height: 500px;
-            span{
+
+            span {
                 font-size: 2em;
                 font-weight: bold;
             }
         }
 
-        .grade{
+        .grade {
             border-radius: 4px 4px 0 0;
             overflow: hidden;
-            h3{
+
+            h3 {
                 text-align: center;
                 background: #cdcdcd;
                 margin: 0;
                 font-size: 1.125em;
                 padding: 0.5em 0;
             }
-            ul{
+
+            ul {
                 @include li-reset;
                 padding: 1em 1.5em;
-                li{
+
+                li {
                     display: flex;
                     align-items: center;
                     padding: .25em 0;
-                    &:before{
+
+                    &:before {
                         content: '';
                         display: inline-block;
                         margin-right: 4px;
@@ -419,51 +544,74 @@ body {
                         border-radius: 50%;
                     }
 
-                    &:nth-child(2):before{ background: #fde1b5; }
-                    &:nth-child(3):before{ background: #f6a866; }
-                    &:nth-child(4):before{ background: #ea5b4a; }
+                    &:nth-child(2):before {
+                        background: #fde1b5;
+                    }
+
+                    &:nth-child(3):before {
+                        background: #f6a866;
+                    }
+
+                    &:nth-child(4):before {
+                        background: #ea5b4a;
+                    }
                 }
             }
-            table{
+
+            table {
                 background: #fff;
                 font-size: .9em;
-                th, td{
+
+                th,
+                td {
                     border-left: 0;
                     border-right: 0;
                     text-align: center;
 
-                    &:first-child{
+                    &:first-child {
                         border-left: #ddd 1px solid;
                     }
-                    &:last-child{
+
+                    &:last-child {
                         border-right: #ddd 1px solid;
                     }
                 }
-                th{
+
+                th {
                     background: #fff;
                     // font-size: .9em;
                     line-height: 1.2;
                 }
-                td{}
-                tr{
-                    td{
-                        &:nth-child(2), &:nth-child(3){ color: #922416; font-weight: bold; }
+
+                td {}
+
+                tr {
+                    td {
+
+                        &:nth-child(2),
+                        &:nth-child(3) {
+                            color: #922416;
+                            font-weight: bold;
+                        }
                     }
                 }
             }
         }
 
         @include screen('mobile') {
+
             // 等級比率
-            &.ratio{
+            &.ratio {
                 padding: 1.65em 1em;
-                .map{
+
+                .map {
                     margin-top: 11em;
                 }
             }
         }
     }
 }
+
 .hidden {
     display: none;
 }
