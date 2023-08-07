@@ -68,6 +68,10 @@ body {
     justify-content: space-between;
     align-items: center;
 
+    h2.title{
+      color: #408204;
+    }
+
     h2.title,
     .function_panel {
         flex: 1 1 auto;
@@ -84,10 +88,11 @@ body {
 }
 
 .sub-title {
-    color: #074cbc;
+    // color: #074cbc;
+    color: #0e2871;
     font-size: 1.35em;
     padding-left: .75em;
-    border-left: solid 4px #074cbc;
+    border-left: solid 4px #0e2871;
 }
 
 // 表單分類標題

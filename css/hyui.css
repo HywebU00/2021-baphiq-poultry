@@ -8902,6 +8902,9 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+.flex-between h2.title {
+  color: #408204;
+}
 .flex-between h2.title,
 .flex-between .function_panel {
   flex: 1 1 auto;
@@ -8917,10 +8920,10 @@ body {
 }
 
 .sub-title {
-  color: #074cbc;
+  color: #0e2871;
   font-size: 1.35em;
   padding-left: 0.75em;
-  border-left: solid 4px #074cbc;
+  border-left: solid 4px #0e2871;
 }
 
 .form_main_title {
