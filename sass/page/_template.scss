@@ -23,6 +23,43 @@ body {
     overflow-x: hidden;
 }
 
+.videoSearch{
+  padding: 1.25em;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  .form_grp{
+    position: relative;
+    label {
+      font-weight: bold;
+      font-size: 125%;
+    }
+    input{
+      padding-right: 5em;
+      width: -webkit-fill-available;
+    }
+    button{
+      position: absolute;
+      right: 0;
+      bottom: 1px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  @include screen('mobile') {
+    background: #fff;
+    .form_grp{
+      input{
+        padding-right: 1em;
+      }
+      button{
+        position: static;
+        width: -webkit-fill-available;
+      }
+    }
+  }
+}
+
 // 內頁（兩物件 水平、垂直置中）
 // h2節點 ＋ function功能區塊
 .flex-between {
@@ -303,11 +340,55 @@ body {
         top: 120px;
     }
 
+    &.video{
+      &:before {
+        width: 620px;
+        height: 620px;
+        background: url(../images/bg-mp-left2.png) 50% 50% no-repeat;
+        background-size: contain;
+        left: calc((100% - 1000px) / 2 - 480px);
+      }
+    }
+
     @include screen('mobile') {
         // background: #fff;
         overflow: hidden;
         overflow-y: auto;
     }
+}
+
+// 影音專區內容頁
+.videInfo{
+  .videoHere{
+    background: #ddd;
+    margin: 1.25em auto;
+  }
+  span.tag{
+    display: inline-block;
+    font-size: 85%;
+    font-weight: bold;
+    border: 1px solid #555;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin: 1.5em 4px .75em 0;
+  }
+  .caption{
+    span, time{
+      margin-right: 1em;
+    }
+  }
+  h4{
+    font-size: 125%;
+  }
+}
+
+ul.videList{
+  li{
+    a{
+      display: block;
+      padding: .25em 0;
+    }
+  }
 }
 
 // 整體共用container樣式，請注意首頁切版頁面的整齊

@@ -92,6 +92,11 @@ $btn-radius:.2em;
     @include btn_setting(lighten($color-orange, 0), #FFF);
 }
 
+.btn-gray {
+    // @extend %btn;
+    @include btn_setting($color-dark, #FFF);
+}
+
 .btn-cancle,
 .btn-red {
     // @extend %btn;

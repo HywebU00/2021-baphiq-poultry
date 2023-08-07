@@ -5,7 +5,7 @@ $m-gutter: 4px;           // Flex grid system default margin
     color: $f_color;
     font-size: 1em;
     border: 1px solid $f_border;
-    padding: .5em;
+    padding: .5em 1em;
     background: #fff;
     vertical-align: middle;
     margin: .3em;
@@ -221,14 +221,14 @@ select::-ms-expand {
     font-size: 100%;
     margin: .5em 0;
 
-    // 表單的線 ----------------------- sratt
+    // 表單的線 ----------------------- start
     // border-top: 1px solid #DDD;
     .form_grp {
         border-bottom: 1px dashed #DDD;
         padding: .5em 0;
-        &:last-child{
-            border-bottom: transparent;  // 最後一筆不要下虛線
-        }
+        // &:last-child{
+        //     border-bottom: transparent;  // 最後一筆不要下虛線
+        // }
     }
     &.form_inline{
         border-bottom: 1px dashed #DDD;
@@ -256,8 +256,8 @@ select::-ms-expand {
                 margin: 0 .5em .5em 0;
             }
         }
-        // 電話、網址專屬
-        .tel, .url {
+        // 電話專屬
+        .tel {
 
             input[type="text"]:first-child,
             input[type="tel"]:first-child {
@@ -281,6 +281,8 @@ select::-ms-expand {
                 }
             }
         }
+
+        .tel_type2{}
 
         // 生日專屬
         .birthday {
@@ -344,6 +346,7 @@ select::-ms-expand {
                 }
             }
         }
+        .address_type2{}
 
         // 日期專屬
         .datepick {
@@ -400,7 +403,7 @@ select::-ms-expand {
 
             >input[type="text"],
             >input[type="date"] {
-                width: 10em;
+                width: 12em;
 
                 @include screen('xs_mobile') {
                     width: calc(100% - .6em);
@@ -415,7 +418,7 @@ select::-ms-expand {
         // 第一層的 form_title
         .form_title{
             // padding: 18px 0;
-            color: darken($primaryColor, 10);
+            color: #222;
             font-weight: 500;
         }
 
@@ -466,13 +469,6 @@ select::-ms-expand {
         // overflow: hidden;
         // @include gutter();
 
-        // 表單不鋪滿
-        // &.w_auto{
-        //     input, select, textarea {
-        //         width: auto;
-        //     }
-        // }
-
 
         // form_content內，同時有多組的表單時
         // 詳見：樣式 2
@@ -488,7 +484,7 @@ select::-ms-expand {
         }
 
         *[class^="notice"] {
-            margin: .3em;
+            margin: 0 .3em;
             width: calc(100% - .6em);
         }
 
@@ -527,6 +523,23 @@ select::-ms-expand {
             // 調整標題
             .form_title{
                 color: #008175;
+                font-size: 120%;
+                padding-top: .25em;
+                margin-top: .5em;
+                padding-left: 20px;
+                background: url(../images/icon-arrow-innerpage.svg) 2px 45% no-repeat;
+                background-size: 10px 10px;
+
+                // position: relative;
+                // &:before{
+                //     content: '';
+                //     position: absolute;
+                //     width: 12px;
+                //     height: 3px;
+                //     background: #2e90ac;
+                //     left: 0;
+                //     top: 0;
+                // }
             }
 
             .form_content {
@@ -563,7 +576,7 @@ select::-ms-expand {
                 .form_grp {
                     // 調整標題
                     .form_title{
-                        color: #bc7000;
+                        color: #222;
                         padding-bottom: 0;
                     }
                 }
@@ -618,49 +631,53 @@ select::-ms-expand {
         }
     }
 
-    // 引用 Flex grid system
-    // 父層設定 - 均分
-    .flex-col-equal-1,
-    .flex-col-equal-2,
-    .flex-col-equal-3,
-    .flex-col-equal-4{
-        @extend %flex_set;
-        width: 100%;
-    }
+    // // 引用 Flex grid system
+    // // 父層設定 - 均分
+    // .flex-col-equal-1,
+    // .flex-col-equal-2,
+    // .flex-col-equal-3,
+    // .flex-col-equal-4{
+    //     @extend %flex_set;
+    //     width: 100%;
+    //     .form_grp {
+    //         border-bottom: 0;
+    //     }
+    // }
 
-    .flex-col-equal-1{
-        >.form_grp {
-            @include flex-xs-equal(1, 0px);
-            @include flex-sm-equal(1, $m-gutter);
-            @include flex-md-equal(1, $m-gutter);
-            @include flex-lg-equal(1, $m-gutter);
-        }
-    }
+    // .flex-col-equal-1{
+    //     >.form_grp {
+    //         @include flex-xs-equal(1, 0px);
+    //         @include flex-sm-equal(1, $m-gutter);
+    //         @include flex-md-equal(1, $m-gutter);
+    //         @include flex-lg-equal(1, $m-gutter);
+    //     }
+    // }
 
-    .flex-col-equal-2{
-        >.form_grp {
-            @include flex-xs-equal(1, 0px);
-            @include flex-sm-equal(2, $m-gutter);
-            @include flex-md-equal(2, $m-gutter);
-            @include flex-lg-equal(2, $m-gutter);
-        }
-    }
-    .flex-col-equal-3{
-        >.form_grp {
-            @include flex-xs-equal(1, 0px);
-            @include flex-sm-equal(3, $m-gutter);
-            @include flex-md-equal(3, $m-gutter);
-            @include flex-lg-equal(3, $m-gutter);
-        }
-    }
-    .flex-col-equal-4{
-        >.form_grp {
-            @include flex-xs-equal(1, 0px);
-            @include flex-sm-equal(2, $m-gutter);
-            @include flex-md-equal(4, $m-gutter);
-            @include flex-lg-equal(4, $m-gutter);
-        }
-    }
+    // .flex-col-equal-2{
+    //     >.form_grp,
+    //     >.col {
+    //         @include flex-xs-equal(1, 0px);
+    //         @include flex-sm-equal(2, $m-gutter);
+    //         @include flex-md-equal(2, $m-gutter);
+    //         @include flex-lg-equal(2, $m-gutter);
+    //     }
+    // }
+    // .flex-col-equal-3{
+    //     >.form_grp {
+    //         @include flex-xs-equal(1, 0px);
+    //         @include flex-sm-equal(3, $m-gutter);
+    //         @include flex-md-equal(3, $m-gutter);
+    //         @include flex-lg-equal(3, $m-gutter);
+    //     }
+    // }
+    // .flex-col-equal-4{
+    //     >.form_grp {
+    //         @include flex-xs-equal(1, 0px);
+    //         @include flex-sm-equal(2, $m-gutter);
+    //         @include flex-md-equal(4, $m-gutter);
+    //         @include flex-lg-equal(4, $m-gutter);
+    //     }
+    // }
 
 
     .form_col-6-6 {
@@ -757,9 +774,9 @@ select::-ms-expand {
     .form_col-2-2-2-2-2-2 {
 
         >.form_grp {
-            width: (100% / 6);
-            flex-basis: (100% / 6);
-            max-width: (100% / 6);
+            width: calc(100% / 6);
+            flex-basis: calc(100% / 6);
+            max-width: calc(100% / 6);
 
             @include screen('mobile') {
                 width: 50%;
@@ -1241,6 +1258,7 @@ select::-ms-expand {
         input[type="button"],
         input[type="search"] {
             margin: .3em;
+            white-space: normal;
         }
     }
 
@@ -1278,7 +1296,10 @@ select::-ms-expand {
             z-index: 1;
             flex-basis: 100%;
             display: flex;
-            align-items: center;
+            // align-items: center;
+
+            align-items: flex-start;
+            padding: .2em 0;
 
             input {
                 &:checked {
@@ -1288,13 +1309,44 @@ select::-ms-expand {
                             width: 1em;
                             height: 1em;
                             border-radius: 50%;
-                            background: #54caff;
+                            // background: #54caff;
                             content: "";
                             left: .6em;
                             top: calc(50% - .5em);
                             z-index: -1;
                             animation: ripple 0.35s linear;
                         }
+                    }
+                }
+            }
+        }
+
+        // 修正 hover 範圍不要太大
+        div{
+            flex-basis: 100%;
+            // width: 100%;
+            margin: 0;
+            padding: 0.2em 0;
+
+            // display: flex;  用flex設定，會讓整條都能被click
+            input, label{ float: left; }
+            input{
+                margin-right: 8px;
+                +label{
+                    padding: 0 0;
+                    max-width: calc(100% - 42px);
+                    >span{
+                        color: darken($primaryColor, 5);
+                        display: contents;
+                    }
+                }
+            }
+
+            +.form_content{
+                padding-left: 2.2em;
+                input{
+                    +label{
+                        padding: .2em 0;
                     }
                 }
             }
@@ -1310,6 +1362,27 @@ select::-ms-expand {
                 display: inline-flex;
                 align-items: center;
             }
+        }
+    }
+
+    .check_grp{
+        label{
+            input+span{
+                color: darken($primaryColor, 5);
+                display: contents;
+            }
+
+            +.form_content{
+                max-width: 100%;
+                padding-left: 2.2em;
+                padding-right: 0;
+            }
+        }
+
+        .radio_grp{
+            background: #f0f0f0;
+            padding: 1em .5em;
+            border-radius: 4px;
         }
     }
 
@@ -1350,6 +1423,56 @@ select::-ms-expand {
     }
 }
 
+// 引用 Flex grid system
+// 父層設定 - 均分
+.flex-col-equal-1,
+.flex-col-equal-2,
+.flex-col-equal-3,
+.flex-col-equal-4{
+    @extend %flex_set;
+    width: 100%;
+    .form_grp {
+        border-bottom: 0;
+    }
+}
+
+.flex-col-equal-1{
+    >.col,
+    >.grp,
+    >.form_grp {
+        @include flex-xs-equal(1, 0px);
+        @include flex-sm-equal(1, $m-gutter);
+        @include flex-md-equal(1, $m-gutter);
+        @include flex-lg-equal(1, $m-gutter);
+    }
+}
+
+.flex-col-equal-2{
+    >.col,
+    >.grp,
+    >.form_grp{
+        @include flex-xs-equal(1, 0px);
+        @include flex-sm-equal(2, $m-gutter);
+        @include flex-md-equal(2, $m-gutter);
+        @include flex-lg-equal(2, $m-gutter);
+    }
+}
+.flex-col-equal-3{
+    >.form_grp {
+        @include flex-xs-equal(1, 0px);
+        @include flex-sm-equal(3, $m-gutter);
+        @include flex-md-equal(3, $m-gutter);
+        @include flex-lg-equal(3, $m-gutter);
+    }
+}
+.flex-col-equal-4{
+    >.form_grp {
+        @include flex-xs-equal(1, 0px);
+        @include flex-sm-equal(2, $m-gutter);
+        @include flex-md-equal(4, $m-gutter);
+        @include flex-lg-equal(4, $m-gutter);
+    }
+}
 
 
 // form 全域行內設定
@@ -1382,9 +1505,20 @@ select::-ms-expand {
     input[type="reset"],
     input[type="button"],
     input[type="search"],
+    input[type="email"],
     .input-i {
         width: auto;
         flex: 0 0 auto;
+    }
+
+    input[type="email"]{
+        width: 60%;
+        min-width: 400px;
+
+        @include screen('mobile') {
+            width: 100%;
+            min-width: auto;
+        }
     }
 
     .form_grp,
@@ -1417,7 +1551,7 @@ select::-ms-expand {
 // form 全域表單垂直排列
 .form-column{
     .form_title{
-        padding-bottom: 0 !important;
+        padding-bottom: 6px !important;
         margin: 0 .3em;
     }
     .form_title,
@@ -1567,7 +1701,7 @@ select:focus {
 //
 //---------------------------------------------下拉選單--------//
 select {
-    line-height: 1.35em;
+    line-height: 1.4em;
     padding: .5em 24px .5em .5em;
     border: 1px solid $color-gray;
     background: #fff url(../images/icon/icon_select_arrow.png) no-repeat right center;
@@ -1595,11 +1729,13 @@ input[type="reset"] {
 input[type="checkbox"],
 input[type="radio"] {
     font-size: 1em;
-    margin: .3em;
-    width: 1em;
-    height: 1em;
+    // margin: .3em;
+    margin: .1em .3em;
+    width: 1.35em;
+    min-width: 1.35em;
+    height: 1.35em;
     background-color: #f7f6ee;
-    border: 2px solid $color-gray;
+    border: 2px solid #858585;
 }
 
 input[type="radio"] {
@@ -1665,7 +1801,7 @@ input[type="checkbox"]:focus {
 
     input[readonly],
     input[disable] {
-        // background: transparent;
+        background: transparent;
         color: #666;
     }
 
@@ -1708,7 +1844,7 @@ input[type="file"] {
     // > label{ color: #b70000; font-weight: bold; }
 
     .radio_grp, .check_grp{
-        &.lost{
+        &.error{
             @include box-shadow(0px 0px 0px 2px #b70000);
             margin-top: 2px;
             padding: .25em;
@@ -1717,14 +1853,14 @@ input[type="file"] {
     }
     .this{ color: #b70000; }
 }
-.lost{
+.error{
     @include box-shadow(0px 0px 0px 2px #b70000);
     border: transparent;
 }
 
 // 第二層
 .form_content .form_grp{
-    &.lost{
+    &.error{
         box-shadow: none;
         // 標題
         .form_title, label{
@@ -1738,7 +1874,7 @@ input[type="file"] {
     }
 }
 
-// .lost{
+// .error{
 //     // 標題
 //     .form_title, label{
 //         color: #b70000; font-weight: bold;
@@ -1779,6 +1915,87 @@ img.captcha {
 abbr[title] {
     border-bottom: none;
     text-decoration: none;
+}
+
+// checkswitch
+.checkSwitch_wrap{
+    padding: .75em 0;
+    .checkSwitch {
+        input[type="checkbox"]:checked{
+            box-shadow: none;
+        }
+    }
+}
+.checkSwitch {
+    // border: 2px solid #aaa;
+    box-sizing: content-box;
+    display: inline-block;
+    cursor: pointer;
+    height: 1.55rem;
+    width: 1.55rem * 1.8;
+    position: relative;
+    input {
+        // position: absolute;
+        // display: none;
+        &:hover, &:focus {
+            cursor: pointer;
+        }
+    }
+    &_switch {
+        position: absolute;
+        top: 0;
+        // width: 100%;
+        // height: 100%;
+        width: 50px;
+        height: 28px;
+        left: 0;
+        border-radius: 10rem;
+        background: $color-gray;
+        box-shadow: 0px 0px 0px 2px $color-gray inset;
+        &:before {
+            content: "";
+            position: absolute;
+            background: #FFF;
+            border-radius: 50%;
+            width: 1rem;
+            height: 1rem;
+            top: .38rem;
+            left: .3rem;
+            z-index: 9;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+            transition: transform 200ms ease, background 200ms;
+        }
+        // &:after {
+        //     position: absolute;
+        //     content: "關閉";
+        //     right: -2.5rem;
+        //     font-size: .938rem;
+        //     color: #888;
+        //     white-space: nowrap;
+        // }
+    }
+    input:checked+&_switch {
+        background: $primaryColor;
+        box-shadow: 0px 0px 0px 2px $primaryColor inset;
+        &:before {
+            transform: translate(150%, 0);
+            box-shadow: none;
+        }
+        // &:after {
+        //     content: "開啟";
+        //     color: $color-green;
+        //     font-weight: bold;
+        // }
+    }
+
+    +span{
+        margin-left: .5em;
+
+        // 清掉
+        padding: 0 !important;
+        border-right: 0 !important;
+        font-weight: normal !important;
+    }
 }
 
 //---------------------------前面有icon的input------------------//

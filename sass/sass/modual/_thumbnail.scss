@@ -1,55 +1,106 @@
-.thumbnail {
-    box-shadow: 0 0 3em -1.5em rgba(0, 0, 0, 0.5);
+.thumbnail{
+  display: flex;
+  flex-wrap: wrap;
+  .col {
+    flex: 0 0 32%;
+    margin: 0 0.5% 2em;
+    border-radius: 6px;
+
+    @include screen('tablet') {
+      flex: 0 0 49%;
+    }
+    @include screen('mobile') {
+      flex: 0 0 100%;
+      margin: 0 0 2em;
+    }
+
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     background: #fff;
     width: 100%;
     overflow: hidden;
     transition: all 0.3s ease;
-    &:hover {
-        box-shadow: 0 12px 3em -1em rgba(0, 0, 0, 0.5);
+    &:hover, &:focus {
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     }
 
     a {
-        display: block;
-        @include aSetting(#555);
-        position: relative;
-        &:focus {
-            &:before {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 1;
-                box-shadow: 0px 0px 0px 1px $aHover inset;
-            }
+      display: block;
+      color: #555;
+      // @include aSetting(#555);
+      position: relative;
+      &:hover, &:focus {
+        color: #222;
+        &:before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 1;
+          box-shadow: 0px 0px 0px 1px $aHover inset;
         }
+      }
     }
     .img-container {
-        @include aspect-ratio(4, 3);
-        margin-bottom: 0.5em;
-        img {
-            object-fit: cover;
-        }
+      @include aspect-ratio(4, 3);
+      img {
+        object-fit: cover;
+      }
     }
     h2,
     h3,
     h4 {
-        margin: 0.2em 0;
+      margin: 0.5em 0;
+      font-size: 125%;
     }
     .caption {
-        width: 90%;
-        margin: 0 auto;
-        padding-bottom: 1em;
+      margin: 0 auto;
+      padding: 1em 1.75em;
+
+      span{
+        &.tag{
+          font-size: 85%;
+          font-weight: bold;
+          border: 1px solid #555;
+          padding: 2px 6px;
+          border-radius: 3px;
+          margin-right: 4px;
+        }
+        &.length, &.view{
+          line-height: 40px;
+          b{
+            display: inline-block;
+            font-size: 0;
+            width: 30px;
+            height: 30px;
+            margin-right: 6px;
+          }
+        }
+        &.length{
+          margin-right: 10px;
+          b{
+            background: url(../images/icon/icon_video.svg) 50% 50% no-repeat;
+            background-size: contain;
+          }
+        }
+        &.view{
+          b{
+            background: url(../images/icon/icon_view.svg) 50% 50% no-repeat;
+            background-size: contain ;
+          }
+        }
+      }
     }
     .btn_grp {
-        padding: 0.2em 0;
-        @extend %clearfix;
+      padding: 0.2em 0;
+      @extend %clearfix;
     }
     hr {
-        width: 90%;
-        margin: 0.1em auto 1em;
+      width: 90%;
+      margin: 0.1em auto 1em;
     }
+  }
 }

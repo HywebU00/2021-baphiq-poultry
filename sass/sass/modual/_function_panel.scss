@@ -188,6 +188,12 @@ div.function {
                         background-size: 100%;
                     }
                 }
+                &.collect {
+                    a:before {
+                        background: url(../images/basic/icon_heart.svg) no-repeat center center;
+                        background-size: 100%;
+                    }
+                }
             }
         }
     }
@@ -276,7 +282,7 @@ div.function {
             height: auto;
             li {
                 display: block;
-                margin: 0 auto.5em;
+                margin: 0 auto 0.5em;
                 &:last-child {
                     margin-bottom: 0;
                 }
