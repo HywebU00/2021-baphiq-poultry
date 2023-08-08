@@ -6586,7 +6586,6 @@ input[type=checkbox]:focus {
 }
 .upload_grp input[readonly],
 .upload_grp input[disable] {
-  background: transparent;
   color: #666;
 }
 .upload_grp .upload_btn {
@@ -7362,7 +7361,7 @@ table.table_sprite tr:nth-child(even) {
 .thumbnail .col h2,
 .thumbnail .col h3,
 .thumbnail .col h4 {
-  margin: 0.5em 0;
+  margin: 0.75em 0;
   font-size: 125%;
 }
 .thumbnail .col .caption {
@@ -8968,8 +8967,8 @@ body {
 
 .file-upload {
   padding: 1.5em 2.5em;
-  background: #f8f8f8;
-  border-radius: 6px;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
 }
 
 .list-history .list-info-box {
@@ -9276,6 +9275,57 @@ ul.videList li a {
   background: transparent;
   box-shadow: none;
   padding: 0;
+}
+.innerpage > .container.shortcut {
+  display: block;
+  padding: 1em 2em 2em;
+}
+.innerpage > .container.shortcut ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.innerpage > .container.shortcut ul li {
+  flex: 0 0 auto;
+  min-width: calc(16.6666666667% - 4px);
+}
+.innerpage > .container.shortcut ul li a {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 0.75em 0.65em;
+  color: #fff;
+  background: #444;
+  font-size: 112.5%;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transform: scale(1);
+  transition: 0.3s;
+}
+.innerpage > .container.shortcut ul li a img {
+  display: block;
+  width: 100%;
+  height: 32px;
+  margin-bottom: 6px;
+  margin-right: 4px;
+}
+.innerpage > .container.shortcut ul li a:hover, .innerpage > .container.shortcut ul li a:focus-visible {
+  transform: scale(1.2);
+  background: #408204;
+  position: relative;
+  z-index: 2;
+  border: 1px solid #fff;
+}
+@media screen and (max-width: 991px) {
+  .innerpage > .container.shortcut ul {
+    flex-wrap: wrap;
+  }
+  .innerpage > .container.shortcut ul li {
+    min-width: calc(50% - 4px);
+    margin: 4px 0;
+  }
 }
 .innerpage .center_block {
   flex: none;
